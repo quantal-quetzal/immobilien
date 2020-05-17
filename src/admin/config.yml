@@ -21,4 +21,12 @@ collections:
                 widget: 'text',
             }
           - { label: 'Wohnfläche', name: 'wohnflaeche', widget: 'number' }
-          - { label: 'Fotos', name: 'fotos', widget: 'string' }
+          - {
+                label: 'Fotos',
+                name: 'fotos',
+                widget: 'list',
+                fields:
+                  - { label: Foto, name: foto, widget: image }
+                  - { label: Fotobeschreibung, name: fotobeschreibung, widget: string }
+            }
+          - { label: 'Text', name: 'text', widget: 'markdown' }
