@@ -12,6 +12,8 @@ module.exports = function (eleventyConfig) {
         return content.replace('</body>', `<style>\n${css}</style><body>`);
     });
 
+    eleventyConfig.addPassthroughCopy('src/**/*.yml');
+
     return {
         dir: {
             input: 'src',
