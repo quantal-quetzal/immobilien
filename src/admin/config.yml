@@ -4,7 +4,7 @@ backend:
 
 locale: 'de'
 
-media_folder: 'media'
+media_folder: 'src/media'
 
 collections:
     - name: 'immobilien' # Used in routes, e.g., /admin/collections/blog
@@ -13,6 +13,12 @@ collections:
       create: true # Allow users to create new documents in this collection
       slug: '{{year}}-{{month}}-{{slug}}' # Filename template, e.g., YYYY-MM-DD-title.md
       fields: # The fields for each document, usually in front matter
+          - {
+                label: 'Permalink',
+                name: 'permalink',
+                widget: 'boolean',
+                default: 'false',
+            }
           - { label: 'Title', name: 'titel', widget: 'string' }
           - { label: 'Datum', name: 'datum', widget: 'datetime' }
           - {
@@ -21,12 +27,14 @@ collections:
                 widget: 'text',
             }
           - { label: 'Wohnfläche', name: 'wohnflaeche', widget: 'number' }
-          - {
-                label: 'Fotos',
-                name: 'fotos',
-                widget: 'list',
-                fields:
-                  - { label: Foto, name: foto, widget: image }
-                  - { label: Fotobeschreibung, name: fotobeschreibung, widget: string }
-            }
-          - { label: 'Text', name: 'text', widget: 'markdown' }
+          - label: Fotos
+            name: fotos
+            widget: list
+            fields:
+                - { label: 'Foto', name: 'foto', widget: 'image' }
+                - {
+                      label: 'Fotobeschreibung',
+                      name: 'fotobeschreibung',
+                      widget: 'string',
+                  }
+          - { label: 'Text', name: 'body', widget: 'markdown' }

@@ -1,7 +1,11 @@
+const lazyImagesPlugin = require('eleventy-plugin-lazyimages');
+
 const Atomizer = require('atomizer');
 const atomizerConfig = require('./.atomizer-config.js');
 
 module.exports = function (eleventyConfig) {
+    eleventyConfig.addPlugin(lazyImagesPlugin);
+
     eleventyConfig.addTransform('atomicCss', function (content, outputPath) {
         const atomizer = new Atomizer({ verbose: true });
         // Parse text to find Atomic CSS classes
@@ -12,7 +16,12 @@ module.exports = function (eleventyConfig) {
         return content.replace('</body>', `<style>\n${css}</style><body>`);
     });
 
+    eleventyConfig.setTemplateFormats(['liquid', 'md']);
+
     eleventyConfig.addPassthroughCopy('src/**/*.yml');
+    eleventyConfig.addPassthroughCopy('src/**/*.html');
+    eleventyConfig.addPassthroughCopy('src/**/*.html');
+    eleventyConfig.addPassthroughCopy('src/media');
 
     return {
         dir: {
