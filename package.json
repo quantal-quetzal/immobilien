@@ -22,7 +22,7 @@
     },
     "homepage": "https://github.com/quantal-quetzal/immobilien#readme",
     "devDependencies": {
-        "@11ty/eleventy": "^0.11.0",
+        "@11ty/eleventy": "^1.0.2",
         "atomizer": "^3.7.0",
         "eleventy-plugin-lazyimages": "^1.1.1",
         "prettier": "2.0.5"
